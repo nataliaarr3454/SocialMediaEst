@@ -17,5 +17,21 @@ namespace SocialMedia.Core.Interfaces
         //Task InsertPostAsync(Post post);
         //Task UpdatePostAsync(Post post);
         //Task DeletePostAsync(Post post);
+        //1
+        Task<IEnumerable<UsuariosSinComentariosResponse>> GetUsuariosSinComentariosAsync();
+        //2
+        Task<IEnumerable<ComentariosTresMesesResponse>> GetComentariosTresMesesUsuariosMayoresAsync();
+       //3
+        Task<IEnumerable<PostsSinComentariosResponse>> GetPostsSinComentariosUsuariosActivosAsync();
+       //4
+      
+       Task<IEnumerable<UsuariosComentanPostsDiferentesResponse>> GetUsuariosComentanPostsDiferentesAsync();
+        //5
+       Task<IEnumerable<PostsConComentariosMenoresResponse>> GetPostsConComentariosMenoresAsync();
+        //6
+        Task<IEnumerable<DensidadComentariosDiaResponse>> GetDensidadComentariosPorDiaAsync();
+        //7
+        Task<IEnumerable<CrecimientoMensualComentariosResponse>> GetCrecimientoMensualComentariosAsync();
+
     }
 }

@@ -135,7 +135,7 @@ namespace SocialMedia.Api.Controllers
         #region Dto Mapper
         [HttpGet("dto/mapper")]
         public async Task<IActionResult> GetPostsDtoMapper(
-            [FromQuery]PostQueryFilter postQueryFilter)
+            [FromQuery] PostQueryFilter postQueryFilter)
         {
             var posts = await _postService.GetAllPostAsync(postQueryFilter);
             var postsDto = _mapper.Map<IEnumerable<PostDto>>(posts);
@@ -160,7 +160,7 @@ namespace SocialMedia.Api.Controllers
         public async Task<IActionResult> GetPostCommentUserAsync()
         {
             var posts = await _postService.GetPostCommentUserAsync();
-           
+
 
             var response = new ApiResponse<IEnumerable<PostComentariosUsersResponse>>(posts);
 
@@ -193,7 +193,7 @@ namespace SocialMedia.Api.Controllers
         }
 
         [HttpPost("dto/mapper/")]
-        public async Task<IActionResult> InsertPostDtoMapper([FromBody]PostDto postDto)
+        public async Task<IActionResult> InsertPostDtoMapper([FromBody] PostDto postDto)
         {
             try
             {
@@ -231,7 +231,7 @@ namespace SocialMedia.Api.Controllers
             var post = await _postService.GetPostAsync(id);
             if (post == null)
                 return NotFound("Post no encontrado");
-      
+
             _mapper.Map(postDto, post);
             await _postService.UpdatePostAsync(post);
 
@@ -251,5 +251,80 @@ namespace SocialMedia.Api.Controllers
             return NoContent();
         }
         #endregion
+
+        //1
+        //https:/localhost:7050/api/post/usuarios/sincomentarios
+
+        [HttpGet("usuarios/sincomentarios")]
+        public async Task<IActionResult> GetUsuariosSinComentarios()
+        {
+            var usuarios = await _postService.GetUsuariosSinComentariosAsync();
+            var response = new ApiResponse<IEnumerable<UsuariosSinComentariosResponse>>(usuarios);
+            return Ok(response);
+        }
+        //2
+        //https:/localhost:7050/api/post/comentarios/tresmeses
+        [HttpGet("comentarios/tresmeses")]
+        public async Task<IActionResult> GetComentariosTresMesesUsuariosMayores()
+        {
+            var comentarios = await _postService.GetComentariosTresMesesUsuariosMayoresAsync();
+            var response = new ApiResponse<IEnumerable<ComentariosTresMesesResponse>>(comentarios);
+            return Ok(response);
+        }
+        //3
+        //https:/localhost:7050/api/post/sincomentarios/usuariosactivos
+
+        [HttpGet("sincomentarios/usuariosactivos")]
+        public async Task<IActionResult> GetPostsSinComentariosUsuariosActivos()
+        {
+            var posts = await _postService.GetPostsSinComentariosUsuariosActivosAsync();
+            var response = new ApiResponse<IEnumerable<PostsSinComentariosResponse>>(posts);
+            return Ok(response);
+        }
+        //4
+        //https:/localhost:7050/api/post/usuarios/comentan-diferentes
+
+        [HttpGet("usuarios/comentan-diferentes")]
+        public async Task<IActionResult> GetUsuariosComentanPostsDiferentes()
+        {
+            var usuarios = await _postService.GetUsuariosComentanPostsDiferentesAsync();
+            var response = new ApiResponse<IEnumerable<UsuariosComentanPostsDiferentesResponse>>(usuarios);
+            return Ok(response);
+        }
+        //5
+        //https:/localhost:7050/api/post/comentarios/menores
+
+        [HttpGet("comentarios/menores")]
+        public async Task<IActionResult> GetPostsConComentariosMenores()
+        {
+            var posts = await _postService.GetPostsConComentariosMenoresAsync();
+            var response = new ApiResponse<IEnumerable<PostsConComentariosMenoresResponse>>(posts);
+            return Ok(response);
+        }
+
+        //6
+        //https:/localhost:7050/api/post/comentarios/densidad-dia
+
+        [HttpGet("comentarios/densidad-dia")]
+        public async Task<IActionResult> GetDensidadComentariosPorDia()
+        {
+            var densidad = await _postService.GetDensidadComentariosPorDiaAsync();
+            var response = new ApiResponse<IEnumerable<DensidadComentariosDiaResponse>>(densidad);
+            return Ok(response);
+        }
+        //7
+        //https:/localhost:7050/api/post/comentarios/crecimientomensual
+
+        [HttpGet("comentarios/crecimientomensual")]
+        public async Task<IActionResult> GetCrecimientoMensualComentarios()
+        {
+            var crecimiento = await _postService.GetCrecimientoMensualComentariosAsync();
+            var response = new ApiResponse<IEnumerable<CrecimientoMensualComentariosResponse>>(crecimiento);
+            return Ok(response);
+        }
+
+
+
     }
+
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Core.CustomEntities
 {
-    public class PostComentariosUsersResponse //1
+    public class DensidadComentariosDiaResponse
     {
-        public int PostId { get; set; }
-        public string Description { get; set; }
+        public string DiaSemana { get; set; }
         public int TotalComentarios { get; set; }
+        public int UsuariosUnicos { get; set; }
     }
 }

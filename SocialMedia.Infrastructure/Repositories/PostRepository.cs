@@ -5,6 +5,7 @@ using SocialMedia.Core.Enum;
 using SocialMedia.Core.Interfaces;
 using SocialMedia.Infrastructure.Data;
 using SocialMedia.Infrastructure.Queries;
+using System.Security.Cryptography;
 
 namespace SocialMedia.Infrastructure.Repositories
 {
@@ -82,5 +83,99 @@ namespace SocialMedia.Infrastructure.Repositories
         //    _context.Posts.Remove(post);
         //    await _context.SaveChangesAsync();
         //}
+        //1
+        public async Task<IEnumerable<UsuariosSinComentariosResponse>> GetUsuariosSinComentariosAsync()
+        {
+            
+            try
+            {
+                var sql = PostQueries.UsuariosSinComentarios;
+                return await _dapper.QueryAsync<UsuariosSinComentariosResponse>(sql);
+            }
+            catch (Exception err)
+            {
+                throw new Exception($"Error al obtener usuarios sin comentarios: {err.Message}");
+            }
+        }
+        public async Task<IEnumerable<ComentariosTresMesesResponse>> GetComentariosTresMesesUsuariosMayoresAsync()
+        {
+            try
+            {
+                var sql = PostQueries.ComentariosTresMesesUsuariosMayores;
+                return await _dapper.QueryAsync<ComentariosTresMesesResponse>(sql);
+            }
+            catch (Exception err)
+            {
+                throw new Exception($"Error al obtener los comentarios de los últimos 3 meses: {err.Message}");
+            }
+        }
+        //3
+        public async Task<IEnumerable<PostsSinComentariosResponse>> GetPostsSinComentariosUsuariosActivosAsync()
+        {
+            try
+            {
+                var sql = PostQueries.PostsSinComentariosUsuariosActivos;
+                return await _dapper.QueryAsync<PostsSinComentariosResponse>(sql);
+            }
+            catch (Exception err)
+            {
+                throw new Exception($"Error al obtener los posts sin comentarios activos: {err.Message}");
+            }
+        }
+
+        //4
+        public async Task<IEnumerable<UsuariosComentanPostsDiferentesResponse>> GetUsuariosComentanPostsDiferentesAsync()
+        {
+            try
+            {
+                var sql = PostQueries.UsuariosComentanPostsDiferentes;
+                return await _dapper.QueryAsync<UsuariosComentanPostsDiferentesResponse>(sql);
+            }
+            catch (Exception err)
+            {
+                throw new Exception($"Error al obtener usuarios que comentaron en posts de diferentes usuarios: {err.Message}");
+            }
+        }
+        //5
+        public async Task<IEnumerable<PostsConComentariosMenoresResponse>> GetPostsConComentariosMenoresAsync()
+        {
+            try
+            {
+                var sql = PostQueries.PostsConComentariosMenores;
+                return await _dapper.QueryAsync<PostsConComentariosMenoresResponse>(sql);
+            }
+            catch (Exception err)
+            {
+                throw new Exception($"Error al obtener los posts con comentarios de menores: {err.Message}");
+            }
+        }
+        //6
+        public async Task<IEnumerable<DensidadComentariosDiaResponse>> GetDensidadComentariosPorDiaAsync()
+        {
+            try
+            {
+                var sql = PostQueries.DensidadComentariosPorDia;
+                return await _dapper.QueryAsync<DensidadComentariosDiaResponse>(sql);
+            }
+            catch (Exception err)
+            {
+                throw new Exception($"Error al obtener la densidad de comentarios por día: {err.Message}");
+            }
+        }
+        //7
+        public async Task<IEnumerable<CrecimientoMensualComentariosResponse>> GetCrecimientoMensualComentariosAsync()
+        {
+            try
+            {
+                var sql = PostQueries.CrecimientoMensualComentarios;
+                return await _dapper.QueryAsync<CrecimientoMensualComentariosResponse>(sql);
+            }
+            catch (Exception err)
+            {
+                throw new Exception($"Error al obtener el crecimiento mensual de comentarios: {err.Message}");
+            }
+        }
+
+
     }
 }

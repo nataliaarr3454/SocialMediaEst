@@ -136,5 +136,49 @@ namespace SocialMedia.Core.Services
 
             return false;
         }
+        //1
+        public async Task<IEnumerable<UsuariosSinComentariosResponse>> GetUsuariosSinComentariosAsync()
+        {
+            var usuarios = await _unitOfWork.PostRepository.GetUsuariosSinComentariosAsync();
+            return usuarios;
+        }
+        //2
+        public async Task<IEnumerable<ComentariosTresMesesResponse>> GetComentariosTresMesesUsuariosMayoresAsync()
+        {
+            var comentarios = await _unitOfWork.PostRepository.GetComentariosTresMesesUsuariosMayoresAsync();
+            return comentarios;
+        }
+        //3
+        public async Task<IEnumerable<PostsSinComentariosResponse>> GetPostsSinComentariosUsuariosActivosAsync()
+        {
+            var posts = await _unitOfWork.PostRepository.GetPostsSinComentariosUsuariosActivosAsync();
+            return posts;
+        }
+        //4
+        public async Task<IEnumerable<UsuariosComentanPostsDiferentesResponse>> GetUsuariosComentanPostsDiferentesAsync()
+        {
+            var usuarios = await _unitOfWork.PostRepository.GetUsuariosComentanPostsDiferentesAsync();
+            return usuarios;
+        }
+        //5
+        public async Task<IEnumerable<PostsConComentariosMenoresResponse>> GetPostsConComentariosMenoresAsync()
+        {
+            var posts = await _unitOfWork.PostRepository.GetPostsConComentariosMenoresAsync();
+            return posts;
+        }
+        //6
+        public async Task<IEnumerable<DensidadComentariosDiaResponse>> GetDensidadComentariosPorDiaAsync()
+        {
+            var densidad = await _unitOfWork.PostRepository.GetDensidadComentariosPorDiaAsync();
+            return densidad;
+        }
+        //7
+        public async Task<IEnumerable<CrecimientoMensualComentariosResponse>> GetCrecimientoMensualComentariosAsync()
+        {
+            var crecimiento = await _unitOfWork.PostRepository.GetCrecimientoMensualComentariosAsync();
+            return crecimiento;
+        }
+
+
     }
 }
