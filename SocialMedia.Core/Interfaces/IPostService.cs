@@ -20,9 +20,7 @@ namespace SocialMedia.Core.Interfaces
         Task<IEnumerable<PostsSinComentariosResponse>> GetPostsSinComentariosUsuariosActivosAsync();//3
         Task<IEnumerable<UsuariosComentanPostsDiferentesResponse>> GetUsuariosComentanPostsDiferentesAsync();//4
         Task<IEnumerable<PostsConComentariosMenoresResponse>> GetPostsConComentariosMenoresAsync();//5
-        Task<IEnumerable<DensidadComentariosDiaResponse>> GetDensidadComentariosPorDiaAsync();//6
-        Task<IEnumerable<CrecimientoMensualComentariosResponse>> GetCrecimientoMensualComentariosAsync();//7
-
+     
 
         Task<Post> GetPostAsync(int id);
         Task InsertPostAsync(Post post);

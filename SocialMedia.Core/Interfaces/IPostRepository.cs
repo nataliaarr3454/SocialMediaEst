@@ -28,10 +28,6 @@ namespace SocialMedia.Core.Interfaces
        Task<IEnumerable<UsuariosComentanPostsDiferentesResponse>> GetUsuariosComentanPostsDiferentesAsync();
         //5
        Task<IEnumerable<PostsConComentariosMenoresResponse>> GetPostsConComentariosMenoresAsync();
-        //6
-        Task<IEnumerable<DensidadComentariosDiaResponse>> GetDensidadComentariosPorDiaAsync();
-        //7
-        Task<IEnumerable<CrecimientoMensualComentariosResponse>> GetCrecimientoMensualComentariosAsync();
-
+       
     }
 }

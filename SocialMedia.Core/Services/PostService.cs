@@ -166,18 +166,8 @@ namespace SocialMedia.Core.Services
             var posts = await _unitOfWork.PostRepository.GetPostsConComentariosMenoresAsync();
             return posts;
         }
-        //6
-        public async Task<IEnumerable<DensidadComentariosDiaResponse>> GetDensidadComentariosPorDiaAsync()
-        {
-            var densidad = await _unitOfWork.PostRepository.GetDensidadComentariosPorDiaAsync();
-            return densidad;
-        }
-        //7
-        public async Task<IEnumerable<CrecimientoMensualComentariosResponse>> GetCrecimientoMensualComentariosAsync()
-        {
-            var crecimiento = await _unitOfWork.PostRepository.GetCrecimientoMensualComentariosAsync();
-            return crecimiento;
-        }
+      
+      
 
 
     }

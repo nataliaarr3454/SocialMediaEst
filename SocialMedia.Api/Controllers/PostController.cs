@@ -302,29 +302,6 @@ namespace SocialMedia.Api.Controllers
             return Ok(response);
         }
 
-        //6
-        //https:/localhost:7050/api/post/comentarios/densidad-dia
-
-        [HttpGet("comentarios/densidad-dia")]
-        public async Task<IActionResult> GetDensidadComentariosPorDia()
-        {
-            var densidad = await _postService.GetDensidadComentariosPorDiaAsync();
-            var response = new ApiResponse<IEnumerable<DensidadComentariosDiaResponse>>(densidad);
-            return Ok(response);
-        }
-        //7
-        //https:/localhost:7050/api/post/comentarios/crecimientomensual
-
-        [HttpGet("comentarios/crecimientomensual")]
-        public async Task<IActionResult> GetCrecimientoMensualComentarios()
-        {
-            var crecimiento = await _postService.GetCrecimientoMensualComentariosAsync();
-            var response = new ApiResponse<IEnumerable<CrecimientoMensualComentariosResponse>>(crecimiento);
-            return Ok(response);
-        }
-
-
-
     }
 
 }

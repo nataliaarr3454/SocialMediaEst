@@ -149,33 +149,6 @@ namespace SocialMedia.Infrastructure.Repositories
                 throw new Exception($"Error al obtener los posts con comentarios de menores: {err.Message}");
             }
         }
-        //6
-        public async Task<IEnumerable<DensidadComentariosDiaResponse>> GetDensidadComentariosPorDiaAsync()
-        {
-            try
-            {
-                var sql = PostQueries.DensidadComentariosPorDia;
-                return await _dapper.QueryAsync<DensidadComentariosDiaResponse>(sql);
-            }
-            catch (Exception err)
-            {
-                throw new Exception($"Error al obtener la densidad de comentarios por día: {err.Message}");
-            }
-        }
-        //7
-        public async Task<IEnumerable<CrecimientoMensualComentariosResponse>> GetCrecimientoMensualComentariosAsync()
-        {
-            try
-            {
-                var sql = PostQueries.CrecimientoMensualComentarios;
-                return await _dapper.QueryAsync<CrecimientoMensualComentariosResponse>(sql);
-            }
-            catch (Exception err)
-            {
-                throw new Exception($"Error al obtener el crecimiento mensual de comentarios: {err.Message}");
-            }
-        }
-
-
+       
     }
 }

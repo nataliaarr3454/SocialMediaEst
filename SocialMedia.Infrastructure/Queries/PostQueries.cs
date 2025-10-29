@@ -97,40 +97,6 @@ namespace SocialMedia.Infrastructure.Queries
                     HAVING COUNT(c.Id) > 0
                     ORDER BY ComentariosMenores DESC;
                     ";
-        //6
-        public static string DensidadComentariosPorDia = @"
-                SELECT 
-                    DATENAME(WEEKDAY, c.Date) AS DiaSemana,
-                    COUNT(c.Id) AS TotalComentarios,
-                    COUNT(DISTINCT c.UserId) AS UsuariosUnicos
-                    FROM Comment c
-                    GROUP BY DATENAME(WEEKDAY, c.Date)
-                    ORDER BY TotalComentarios DESC;
-                    ";
-        //7
-        public static string CrecimientoMensualComentarios = @"
-            WITH ComentariosMensuales AS (
-                SELECT 
-                    YEAR(c.Date) AS Anio,
-                    MONTH(c.Date) AS Mes,
-                    COUNT(c.Id) AS TotalComentarios
-                    FROM Comment c
-                    GROUP BY YEAR(c.Date), MONTH(c.Date)
-                    )
-                SELECT 
-                    Anio,
-                    Mes,
-                    TotalComentarios,
-                    LAG(TotalComentarios, 1) OVER (ORDER BY Anio, Mes) AS MesAnterior,
-                        CASE 
-                    WHEN LAG(TotalComentarios, 1) OVER (ORDER BY Anio, Mes) = 0 THEN NULL
-                        ELSE ROUND(
-                        ((CAST(TotalComentarios AS FLOAT) - LAG(TotalComentarios, 1) OVER (ORDER BY Anio, Mes)) 
-                        / LAG(TotalComentarios, 1) OVER (ORDER BY Anio, Mes)) * 100, 2
-                        )
-                        END AS CrecimientoPorcentual
-                        FROM ComentariosMensuales
-                        ORDER BY Anio, Mes;
-                        ";
+       
     }
 }
